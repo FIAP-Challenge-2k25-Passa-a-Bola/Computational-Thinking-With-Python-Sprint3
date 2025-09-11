@@ -58,27 +58,38 @@ while True:
 
 print("Funções do site:\n1-) Ver o meu perfil\n2-) Criar Posts\n3-) Listar posts existentes\n4-) Sair")
 
+posts = []
+
 while True:
-    posts = []
     opcao = input("O quê você gostaria de fazer? (Digite o número): ").upper().strip()
 
     if opcao == "1":
-        print(f"\nPerfil de {primeiro_nome(nome)}:\nNome: {nome}\nE-mail: {email}\nSenha: {senha}")
+        print(f"\nPerfil de {nome}:\nNome: {nome}\nE-mail: {email}\nSenha: {senha}")
 
     elif opcao == "2":
-        h1 = input("Insira o título do post: ").strip(), posts.append(h1)
-        main = input("Insira o corpo do post: ").strip(), posts.append(main)
-        footer = input("Insira o footer do post: ").strip(), posts.append(footer)
+        h1 = input("Insira o título do post: ").capitalize().strip() 
+        main = input("Insira o corpo do post: ").capitalize().strip() 
 
         post = {
             "titulo": h1,
             "corpo": main,
-            "footer": footer
+            "autor": f"Autor: {primeiro_nome(nome)}"
         }
 
         posts.append(post)
 
         print("\n✅ Post criado com sucesso!\n")
+
+    elif opcao == "3":
+        if posts != []:
+        
+            for i, post in enumerate(posts, start=1):
+                print(f"\nPost n{i}:\n")
+                print(f"{post["titulo"]}")
+                print(f"{post["corpo"]}")
+                print(f"{post["autor"]}\n")
+        else:
+            print(f"\033[93mAinda não há nenhum post\033[0m\n")
 
 
 
