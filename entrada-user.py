@@ -6,10 +6,16 @@ def restart(): #Função pra reinicializar o sistema e o terminal
     python = sys.executable
     os.execl(python, python, *sys.argv)
 
+def primeiro_nome(name:str):
+    name = name.split(' ')
+    for i in name:
+        primeiro_nome = name[0]
+    return primeiro_nome
+
 print("LOGIN - PASSA A BOLA \n")
 
 # Cadastro do usuário: 
-nome = input("Digite o seu nome completo: ").capitalize().split(" ")
+nome = input("Digite o seu nome completo: ").capitalize()
 email = input("Digite o seu email principal: ").strip()
 senha = input("Crie uma senha para usar no APP: ").strip()
 
@@ -32,10 +38,7 @@ while True:
     else:
         print("\033[91mSenha incorreta. Tente novamente.\033[0m")
 
-for i in nome: # Função pra coletar o primeiro nome do usuário
-    primeiro_nome = nome[0]
-        
-print(f"\nSeja bem vindo(a) a nossa comunidade exclusiva, \033[32m{primeiro_nome}\033[0m")
+print(f"\nSeja bem vindo(a) a nossa comunidade exclusiva, \033[32m{primeiro_nome(nome)}\033[0m")
 
 while True:
     membro = input("Deseja ser membro(a) fiel do PASSA A BOLA? (Você não tem escolha) ").upper().strip()
@@ -43,9 +46,29 @@ while True:
     if membro not in ["SIM","S","SIP","SIK","SIN"]:
         membro = input("Não não é resposta, diz que sim, vai (eu avisei) ").upper().strip()
 
+        if membro in ["SIM","S","SIP","SIK","SIN"]:
+            print("\033[32mObrigado por fazer parte da nossa comunidade!\033[0m\n")
+            break
+
     else:
         print("\033[32mObrigado por fazer parte da nossa comunidade!\033[0m\n")
         break
+
+#-----------------------------------------------------------------------------------------------------------
+
+print("Funções do site:\n1-) Ver o meu perfil\n2-) Criar Posts\n3-) Listar posts existentes\n4-) Sair")
+
+while True:
+    opcao = input("O quê você gostaria de fazer? (Digite o número): ").upper().strip()
+
+    if opcao == "1":
+        print(f"\nPerfil de {primeiro_nome(nome)}:\nNome: {nome}\nE-mail: {email}\nSenha: {senha}")
+
+
+
+
+    
+
 
 
     
