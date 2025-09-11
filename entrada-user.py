@@ -56,7 +56,7 @@ while True:
 
 #-----------------------------------------------------------------------------------------------------------
 
-print("Funções do site:\n1-) Ver o meu perfil\n2-) Criar Posts\n3-) Listar posts existentes\n4-) Sair")
+print("Funções do site:\n1-) Ver o meu perfil\n2-) Criar Posts\n3-) Listar posts existentes\n\033[91m Sair\033[0m")
 
 posts = []
 
@@ -90,6 +90,13 @@ while True:
                 print(f"{post["autor"]}\n")
         else:
             print(f"\033[93mAinda não há nenhum post\033[0m\n")
+
+    elif opcao == "4":
+        print("\nVocê acaba de sair do nosso site, agradecemos sua atenção!")
+        time.sleep(1)
+        print("\033[32mxd\033[0m")
+        break
+
 
 
 
