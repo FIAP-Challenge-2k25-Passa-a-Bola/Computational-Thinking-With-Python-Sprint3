@@ -59,10 +59,30 @@ while True:
 print("Funções do site:\n1-) Ver o meu perfil\n2-) Criar Posts\n3-) Listar posts existentes\n4-) Sair")
 
 while True:
+    posts = []
     opcao = input("O quê você gostaria de fazer? (Digite o número): ").upper().strip()
 
     if opcao == "1":
         print(f"\nPerfil de {primeiro_nome(nome)}:\nNome: {nome}\nE-mail: {email}\nSenha: {senha}")
+
+    elif opcao == "2":
+        h1 = input("Insira o título do post: ").strip(), posts.append(h1)
+        main = input("Insira o corpo do post: ").strip(), posts.append(main)
+        footer = input("Insira o footer do post: ").strip(), posts.append(footer)
+
+        post = {
+            "titulo": h1,
+            "corpo": main,
+            "footer": footer
+        }
+
+        posts.append(post)
+
+        print("\n✅ Post criado com sucesso!\n")
+
+
+
+
 
 
 
