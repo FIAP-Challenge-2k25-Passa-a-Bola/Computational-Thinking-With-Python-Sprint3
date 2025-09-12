@@ -34,4 +34,4 @@ O objetivo foi criar um **protótipo em Python (CLI)** que simula funcionalidade
 ## ▶️ Como executar
 1. Clone o repositório:
    ```bash
-   git clone ...
+   git clone https://github.com/FIAP-Challenge-2k25-Passa-a-Bola/Computational-Thinking-With-Python-Sprint3.git
