@@ -8,9 +8,37 @@ def restart(): #Função pra reinicializar o sistema e o terminal
 
 def primeiro_nome(name:str):
     name = name.split(' ')
+
     for i in name:
         primeiro_nome = name[0]
     return primeiro_nome
+
+def mostra_perfil(name:str, mail:str, password:str):
+    print(f"\nPerfil de {name}:\nNome: {name}\nE-mail: {mail}\nSenha: {password}\n")
+
+def cria_post():
+    h1 = input("Insira o título do post: ").capitalize().strip() 
+    main = input("Insira o corpo do post: ").capitalize().strip() 
+
+    post = {
+        "titulo": h1,
+        "corpo": main,
+        "autor": f"Autor: {primeiro_nome(nome)}"
+    }
+
+    posts.append(post)
+
+    print("\n✅ Post criado com sucesso!\n")
+
+def mostra_opcoes():
+    print("\nFunções do site:\n1-) Ver o meu perfil\n2-) Criar Posts\n3-) Listar posts existentes\n\033[91m4-) Sair\033[0m\n")
+
+def listar_posts(postagens:list):
+    if postagens:
+        for i, post in enumerate(postagens, start=1):
+            print(f"\nPost n{i}:\n{post['titulo']}\n{post['corpo']}\n{post['autor']}\n")
+    else:
+        print(f"\033[93mAinda não há nenhum post\033[0m\n")
 
 print("LOGIN - PASSA A BOLA \n")
 
@@ -22,7 +50,7 @@ senha = input("Crie uma senha para usar no APP: ").strip()
 tentativas = 3
 
 while True:
-    verificacao = input(f"Confirme sua senha: \033[93m({tentativas} tentativa(s) restante(s))\033[0m ").strip()
+    verificacao = input(f"Confirme sua senha \033[93m({tentativas} tentativa(s) restantes):\033[0m ").strip()
 
     if verificacao == senha:
         print("✅ Senha correta, acesso liberado!")
@@ -56,46 +84,37 @@ while True:
 
 #-----------------------------------------------------------------------------------------------------------
 
-print("Funções do site:\n1-) Ver o meu perfil\n2-) Criar Posts\n3-) Listar posts existentes\n\033[91m Sair\033[0m")
-
+contador = 0
 posts = []
+
+mostra_opcoes()
 
 while True:
     opcao = input("O quê você gostaria de fazer? (Digite o número): ").upper().strip()
+    contador += 1
+
+    if contador >= 3:
+        mostra_opcoes()
 
     if opcao == "1":
-        print(f"\nPerfil de {nome}:\nNome: {nome}\nE-mail: {email}\nSenha: {senha}")
+        mostra_perfil(nome,email,senha)
 
     elif opcao == "2":
-        h1 = input("Insira o título do post: ").capitalize().strip() 
-        main = input("Insira o corpo do post: ").capitalize().strip() 
-
-        post = {
-            "titulo": h1,
-            "corpo": main,
-            "autor": f"Autor: {primeiro_nome(nome)}"
-        }
-
-        posts.append(post)
-
-        print("\n✅ Post criado com sucesso!\n")
-
-    elif opcao == "3":
-        if posts != []:
+        cria_post()
         
-            for i, post in enumerate(posts, start=1):
-                print(f"\nPost n{i}:\n")
-                print(f"{post["titulo"]}")
-                print(f"{post["corpo"]}")
-                print(f"{post["autor"]}\n")
-        else:
-            print(f"\033[93mAinda não há nenhum post\033[0m\n")
+    elif opcao == "3":
+        listar_posts(posts)
 
     elif opcao == "4":
-        print("\nVocê acaba de sair do nosso site, agradecemos sua atenção!")
-        time.sleep(1)
+        print("\nVocê acaba de sair do nosso site, agradecemos sua atenção!"),time.sleep(1)
         print("\033[32mxd\033[0m")
+        
         break
+
+    else:
+        print("\n\033[93mDigite um índice válido!\033[0m\n")
+        
+        
 
 
 
