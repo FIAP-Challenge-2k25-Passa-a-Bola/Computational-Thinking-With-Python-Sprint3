@@ -1,21 +1,18 @@
 import os, sys, time
 
-def restart(): #Função pra reinicializar o sistema e o terminal
-
+# Função pra reinicializar o sistema e o terminal
+def restart(): 
     os.system('cls' if os.name == 'nt' else 'clear')
     python = sys.executable
     os.execl(python, python, *sys.argv)
 
-def primeiro_nome(name:str):
-    name = name.split(' ')
+# Função lambda que retorna o primeiro nome
+primeiro_nome = lambda name: name.split(' ')[0]
 
-    for i in name:
-        primeiro_nome = name[0]
-    return primeiro_nome
+# Função lambda que mostra o perfil do usuário
+mostra_perfil = lambda name, mail, password: print(f'\nPerfil de {name}:\nNome: {name}\nE-mail: {mail}\nSenha: {password}\n')
 
-def mostra_perfil(name:str, mail:str, password:str):
-    print(f"\nPerfil de {name}:\nNome: {name}\nE-mail: {mail}\nSenha: {password}\n")
-
+# Função que cria um post e adiciona na lista de posts
 def cria_post():
     h1 = input("Insira o título do post: ").capitalize().strip() 
     main = input("Insira o corpo do post: ").capitalize().strip() 
@@ -30,9 +27,10 @@ def cria_post():
 
     print("\n✅ Post criado com sucesso!\n")
 
-def mostra_opcoes():
-    print("\nFunções do site:\n1-) Ver o meu perfil\n2-) Criar Posts\n3-) Listar posts existentes\n\033[91m4-) Sair\033[0m\n")
+# Função lambda que mostra as opções do site
+mostra_opcoes = lambda: print('\nFunções do site:\n1-) Ver o meu perfil\n2-) Criar Posts\n3-) Listar posts existentes\n\033[91m4-) Sair\033[0m\n')
 
+# Função que lista os posts criados
 def listar_posts(postagens:list):
     if postagens:
         for i, post in enumerate(postagens, start=1):
@@ -40,6 +38,8 @@ def listar_posts(postagens:list):
     else:
         print(f"\033[93mAinda não há nenhum post\033[0m\n")
 
+
+#-Coleta-de-Dados----------------------------------------------------------------------------------------------------------
 print("LOGIN - PASSA A BOLA \n")
 
 # Cadastro do usuário: 
@@ -49,6 +49,7 @@ senha = input("Crie uma senha para usar no APP: ").strip()
 
 tentativas = 3
 
+# Verificação da senha:
 while True:
     verificacao = input(f"Confirme sua senha \033[93m({tentativas} tentativa(s) restantes):\033[0m ").strip()
 
@@ -68,6 +69,7 @@ while True:
 
 print(f"\nSeja bem vindo(a) a nossa comunidade exclusiva, \033[32m{primeiro_nome(nome)}\033[0m")
 
+# Pergunta se o usuário quer ser membro fiel
 while True:
     membro = input("Deseja ser membro(a) fiel do PASSA A BOLA? (Você não tem escolha) ").upper().strip()
 
@@ -82,7 +84,8 @@ while True:
         print("\033[32mObrigado por fazer parte da nossa comunidade!\033[0m\n")
         break
 
-#-----------------------------------------------------------------------------------------------------------
+
+#-Execuçao-Principal-------------------------------------------------------------------------------------------------------
 
 contador = 0
 posts = []
@@ -113,23 +116,3 @@ while True:
 
     else:
         print("\n\033[93mDigite um índice válido!\033[0m\n")
-        
-        
-
-
-
-
-
-
-
-
-
-    
-
-
-
-    
-
-
-    
-
