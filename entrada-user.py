@@ -68,6 +68,10 @@ def lista_posts() -> None:
 # Altera somente a senha do usuário
 def altera_senha():
     global senha
+    if input("Digite a senha atual: ").strip() != senha:
+        print("Senha incorreta. Operação cancelada.")
+        return
+
     nova = input("Digite a nova senha: ").strip()
 
     if nova == "":
@@ -80,6 +84,11 @@ def altera_senha():
 
 # Exclui o perfil (apaga o arquivo e sai)
 def exclui_perfil():
+    global senha
+    if input('Confirme sua senha: ').strip() != senha:
+        print("Senha incorreta. Operação cancelada.")
+        return
+
     if os.path.exists("usuario.txt"):
         os.remove("usuario.txt")
 

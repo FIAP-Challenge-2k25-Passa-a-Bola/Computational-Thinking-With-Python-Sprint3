@@ -62,6 +62,6 @@ O coração do programa, onde o menu interativo é gerenciado:
 2.  Exibe as opções do menu pela primeira vez.
 3.  Entra em um laço `while True` que continuamente solicita ao usuário uma opção.
 4.  A cada três interações, o menu de opções é exibido novamente para conveniência do usuário.
-5.  Utiliza uma estrutura `if/elif/else` para chamar a função correspondente à escolha do usuário (`1` para perfil, `2` para criar post, `3` para listar posts).
-6.  A opção `4` encerra o programa com uma mensagem de despedida.
+5.  Utiliza uma estrutura `if/elif/else` para chamar a função correspondente à escolha do usuário (`1` para perfil, `2` para criar post, `3` para listar posts, `4` para alterar a senha, `5` para excluir perfil).
+6.  A opção `6` encerra o programa com uma mensagem de despedida.
 7.  Qualquer outra entrada é tratada como inválida.
